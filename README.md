@@ -126,3 +126,12 @@ Example validation error (http code 422):
     }
 }
 ```
+
+### Cookie handling and token validation
+
+For cookie parse and toke validation with user data use [auth-server-jwt](https://www.npmjs.com/package/auth-server-jwt)
+
+This middleware used to parse the cookie to `req.cookies` and validate the accessToken passed in the cookie and get the user Data from the parse token using JWT and secret.
+
+Added cors and allow localhost:3000 to overcome the cors error.
+we can avoid this by running both API and client side at the same server.
