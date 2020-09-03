@@ -1,7 +1,7 @@
 import { Router } from "express";
 import AuthController from "../controllers/AuthController";
 import Validate from "../middleware/Validate";
-import Authorize from "../middleware/Authorize";
+import authServer from "auth-server-jwt";
 import authSchemas from "../schemas/auth";
 
 const router = Router();
@@ -21,7 +21,7 @@ router.post(
   Validate.prepare(authSchemas.refreshTokens),
   AuthController.refreshTokens
 );
-router.post("/auth/logout", Authorize.check, AuthController.logout);
+router.post("/auth/logout", authServer.check, AuthController.logout);
 router.post(
   "/auth/restore-password",
   Validate.prepare(authSchemas.restorePassword),
